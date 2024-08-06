@@ -1,0 +1,205 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- bulma css template -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <!-- ionicons -->
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  <!-- model viewer -->
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.1.1/model-viewer.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <style>
+    .gif-container {
+      position: relative;
+      display: inline-block;
+      text-align: center;
+    }
+
+    .caption {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.5); /* Optional: semi-transparent background */
+      color: white; /* Caption text color */
+      padding: 5px;
+      font-size: 16px;
+      text-align: center;
+    }
+
+    .gif {
+      display: block;
+    }
+
+
+    .carousel-item img {
+      width: 100%;
+      height: auto;
+    }
+    .carousel-control-prev,
+    .carousel-control-next {
+      width: 5%;
+      height: 5%;
+      background-color: rgba(255, 255, 255, 0.8);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    .carousel-control-prev {
+      left: 2%;
+    }
+    .carousel-control-next {
+      right: 2%;
+    }
+    .carousel-control-prev:hover,
+    .carousel-control-next:hover {
+      background-color: rgba(255, 255, 255, 1);
+    }
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+      display: none;
+    }
+    .carousel-control-prev i,
+    .carousel-control-next i {
+      color: black;
+      font-size: 2em; /* Adjusted to fit within the percentage-based button size */
+    }
+  </style>
+  <title>
+    Disco4D
+  </title>
+  <link rel="icon" href="icon.ico">
+</head>
+<body>
+  <section class="section">
+
+  <div class="container has-text-centered">
+    <!-- paper title -->
+    <p class="title is-3"> Disco4D: Disentangled 4D Human Generation and Animation from a Single Image </p>
+    <!-- authors -->
+    <p class="subtitle is-4">Anonymous Submission</p>
+
+   
+  </div>
+
+  <!-- main container -->
+  <div class="container is-max-desktop has-text-centered">
+
+    <!-- abstract -->
+    <p class="title is-3 mt-5 has-text-centered"> Abstract </p>
+    <p class="content is-size-6 has-text-left">
+      We present Disco4D, a novel Gaussian Splatting framework for 4D human genera-
+      tion and animation from a single image. Different from existing methods, Disco4D
+      distinctively disentangles clothings (with Gaussian models) from the human body
+      (with SMPL-X model), significantly enhancing the generation details and flexibility.
+      It has the following technical innovations. 1) Disco4D learns to efficiently fit the
+      clothing Gaussians over the SMPL-X Gaussians. 2) It adopts diffusion models to
+      enhance the 3D generation process, e.g., modeling occluded parts not visible in the
+      input image. 3) It learns an identity encoding for each clothing Gaussian to facilitate
+      the separation and extraction of clothing assets. Furthermore, Disco4D naturally
+      supports 4D human animation with vivid dynamics. Extensive experiments demonstrate the superiority of Disco4D on 4D human generation and animation tasks.
+    </p>
+    
+
+    <p class="title is-3 mt-5 has-text-centered"> Image-to-4D </p>
+    <p class="content has-text-centered is-size-5">
+      We can support generation and disentanglement.
+    </p>
+    <video muted autoplay loop> <source src="videos/stacked_output_vid_canonical.mp4" type="video/mp4"> </video>
+
+    <p class="content has-text-centered is-size-5">
+      We can support animation. Diverse 3D motions can be generated for the same static model. 
+    </p>
+
+    <video muted autoplay loop> <source src="videos/stacked_output_vid_anim.mp4" type="video/mp4"> </video>
+    
+    <p class="content has-text-centered is-size-5">
+      We can support fine-grained editing and composition.
+    </p>
+
+    <video muted autoplay loop> <source src="videos/stacked_output_vid_edit.mp4" type="video/mp4"> </video>
+
+  </div>
+
+  <div class="container is-max-desktop has-text-centered">
+    <p class="title is-3 mt-5 has-text-centered"> Video-to-4D </p>
+    <p class="title is-5 mt-5 has-text-centered"> Comparisons to Video-to-3D/4D methods</p>
+    We can support addition of clothing dynamics if more frames are available.
+    We added comparisons to DreamGaussian4D, GaussianAvatar, GART, MonoHuman. 
+    Swipe right for the canonical reconstruction. 
+    
+
+    <div id="gifCarousel1" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="videos/stacked_vertical.gif" class="d-block w-100" alt="First GIF">
+        </div>
+        <div class="carousel-item">
+          <img src="videos/stacked_cano_vertical.gif" class="d-block w-100" alt="Second GIF">
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#gifCarousel1" role="button" data-slide="prev">
+        <i class="fas fa-angle-left"></i>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#gifCarousel1" role="button" data-slide="next">
+        <i class="fas fa-angle-right"></i>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+    
+    <p class="title is-5 mt-5 has-text-centered"> Training data for existing Video-to-4D methods</p>
+    Existing Video-to-4D method rely on information available from dense multi-view iamges for reconstruction and are unable to model unseen views.
+
+    <div id="gifCarousel2" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="gif-container">
+            <div class="caption">ZJU Mocap</div>
+            <img class="gif" src="videos/zju_mocap_horizontal.gif" alt="ZJU Mocap Horizontal GIF">
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="gif-container">
+            <div class="caption">People Snapshot</div>
+            <img class="gif" src="videos/people_snapshot_horizontal.gif" alt="People Snapshot Horizontal GIF">
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="gif-container">
+            <div class="caption">NeuMan</div>
+            <img class="gif" src="videos/neuman_horizontal.gif" alt="Neuman Horizontal GIF">
+          </div>
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#gifCarousel2" role="button" data-slide="prev">
+        <i class="fas fa-angle-left"></i>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#gifCarousel2" role="button" data-slide="next">
+        <i class="fas fa-angle-right"></i>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+
+
+  </div>
+
+
+  </section>
+
+
+</body>
+</html>
